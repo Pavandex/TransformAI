@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import './App.css';
 
-const API_KEY = "YOUR_API_KEY_HERE"; 
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 const App = () => {
@@ -72,25 +72,23 @@ const App = () => {
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 
-      const prompt = `
-        You are an advanced AI-powered content transformation engine built for enterprise and government communications.
-        Task: Transform the provided source content into the requested deliverables adhering strictly to the operational parameters.
-        
-        Parameters:
-        - Target Audience: ${audience}
-        - Tone: ${tone}
-        - Language: ${language}
-        - Detail Level: ${detailLevel}
-        - Communication Objective: ${commObjective}
-        - Content Style: ${contentStyle}
-        - Requested Deliverables: ${selectedOutputs.join(", ")}
+      const promptText = `You are an enterprise AI communication engine. 
+      CRITICAL INSTRUCTION: Analyze the attached image file thoroughly. Extract all visible text (such as "never give up"), visual subjects, characters, and design themes from the image, and combine them with the user's additional notes below.
+      
+      Parameters:
+      - Target Audience: ${audience}
+      - Tone: ${tone}
+      - Language: ${language}
+      - Detail Level: ${detailLevel}
+      - Communication Objective: ${commObjective}
+      - Content Style: ${contentStyle}
+      - Requested Deliverables: ${selectedOutputs.join(", ")}
 
-        Source Information: "${sourceContent || fileName}"
-        
-        Instructions: Format everything clearly using professional Markdown headings.
-      `;
+      User Notes: "${sourceContent || 'None provided'}"
+      Format everything clearly using professional Markdown headings.`;
 
-      let requestPayload = [prompt];
+      let requestPayload = [promptText];
+      
       if (fileObj) {
         const imagePart = await fileToGenerativePart(fileObj);
         requestPayload.push(imagePart);
