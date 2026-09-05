@@ -136,8 +136,13 @@ const App = () => {
   return (
     <div className="app">
       <aside className="sidebar">
-        <div className="logo">
-          <span>✦</span> TransformAI
+        <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#38bdf8"/>
+            <path d="M2 17L12 22L22 17" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span style={{ fontWeight: '700', fontSize: '18px', letterSpacing: '-0.5px' }}>TransformAI</span>
         </div>
         <nav>
           <button 

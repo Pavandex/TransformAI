@@ -313,3 +313,48 @@ select {
     color: #555864;
     font-size: 11px;
 }
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+  
+  .sidebar {
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 16px !important;
+  }
+  
+  .sidebar nav {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+  
+  .sidebar-bottom {
+    display: none !important;
+  }
+  
+  .main {
+    padding: 16px !important;
+    height: auto !important;
+    overflow-y: visible !important;
+  }
+  
+  .workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  
+  .output-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .controls {
+    grid-template-columns: 1fr !important;
+  }
+}
