@@ -70,7 +70,7 @@ const App = () => {
     let outputText = '';
 
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
       const promptText = `You are an enterprise AI communication engine. 
       CRITICAL INSTRUCTION: Analyze the attached image file thoroughly. Extract all visible text (such as "never give up"), visual subjects, characters, and design themes from the image, and combine them with the user's additional notes below.
