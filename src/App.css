@@ -313,48 +313,91 @@ select {
     color: #555864;
     font-size: 11px;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
+  body, html {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+  }
+
   .app {
     flex-direction: column !important;
     height: auto !important;
+    min-height: 100vh;
   }
-  
+
+  /* Fix Sidebar & Nav Clipping (Screenshot 2) */
   .sidebar {
     width: 100% !important;
     height: auto !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
     padding: 12px 16px !important;
+    position: relative !important;
+    gap: 12px !important;
+    background: #090d16 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
+  .sidebar .logo {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
   .sidebar nav {
     display: flex !important;
     flex-direction: row !important;
-    gap: 8px !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 4px !important;
   }
-  
-  .sidebar-bottom {
-    display: none !important;
+
+  .sidebar nav button, .sidebar nav a {
+    flex: 1;
+    text-align: center;
+    padding: 8px 4px !important;
+    font-size: 13px !important;
+    white-space: nowrap;
   }
-  
+
+  /* Fix Giant Heading Wrapping (Screenshot 1) */
+  .main h1, h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: -1px !important;
+    word-break: break-word;
+  }
+
   .main {
     padding: 16px !important;
-    height: auto !important;
-    overflow-y: visible !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
-  
-  .workspace {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
+
+  /* Fix Squished Container Cards */
+  .workspace, .card, .upload-box, .input-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 16px 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
   }
-  
-  .output-grid {
-    grid-template-columns: 1fr !important;
+
+  textarea, input[type="text"], select {
+    width: 100% !important;
+    font-size: 16px !important;
+    box-sizing: border-box !important;
   }
-  
-  .controls {
-    grid-template-columns: 1fr !important;
+
+  button {
+    width: 100% !important;
+    min-height: 48px !important;
   }
 }
